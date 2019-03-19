@@ -17,8 +17,8 @@ export function getPlayersRequest() {
   return { type: types.FETCH_PLAYERS__REQUEST };
 };
 
-export function getPlayersSuccess(players) {
-  return { type: types.FETCH_PLAYERS__SUCCESS, players };
+export function getPlayersSuccess(users) {
+  return { type: types.FETCH_PLAYERS__SUCCESS, users };
 };
 
 export function getPlayersFailure() {

@@ -5,7 +5,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState= {
-  players: [],
+  users: [],
   requesting: false,
 };
 
@@ -14,7 +14,7 @@ export default function players(state=initialState, action) {
     case FETCH_PLAYERS__REQUEST:
       return { ...state, requesting: true };
     case FETCH_PLAYERS__SUCCESS:
-      return { ...state, players: action.players, requesting: false };
+      return { ...state, users: action.users, requesting: false };
     case FETCH_PLAYERS__FAILURE:
       return { ...state, players: [], requesting: true };
     default:
