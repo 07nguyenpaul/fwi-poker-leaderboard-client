@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
       <h1 className="header--title">
-        All-Time Tournament Earnings
+        All-Time Tournament Winnings
       </h1>
     );
   }

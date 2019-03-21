@@ -24,3 +24,62 @@ export function getPlayersSuccess(users) {
 export function getPlayersFailure() {
   return { type: types.FETCH_PLAYERS__FAILURE };
 };
+
+export function addPlayer(firstName, lastName, earnings, country) {
+  return async dispatch => {
+    dispatch(addPlayerRequest());
+    try {
+      const response = await Player.addPlayer(
+        firstName,
+        lastName,
+        earnings,
+        country
+      );
+      dispatch(addPlayerSuccess(response.data.user));
+    } catch (error) {
+      dispatch(addPlayerFailure());
+    }
+  };
+};
+
+export function addPlayerRequest() {
+  return { type: types.ADD_PLAYER__REQUEST };
+};
+
+export function addPlayerSuccess(player) {
+  return { type: types.ADD_PLAYER__SUCCESS, player };
+};
+
+export function addPlayerFailure() {
+  return { type: types.ADD_PLAYER__FAILURE };
+};
+
+export function editPlayer(id, firstName, lastName, earnings, country) {
+  return async dispatch => {
+    dispatch(editPlayerRequest());
+    try {
+      const response = await Player.editPlayer(
+        id,
+        firstName,
+        lastName,
+        earnings,
+        country
+      );
+      dispatch(editPlayerSuccess(response.data.user));
+    } catch (error) {
+      dispatch(editPlayerFailure());
+    }
+  };
+};
+
+export function editPlayerRequest() {
+  return { type: types.EDIT_PLAYER__REQUEST };
+};
+
+export function editPlayerSuccess(player) {
+  return { type: types.EDIT_PLAYER__SUCCESS, player };
+};
+
+export function editPlayerFailure() {
+  return { type: types.EDIT_PLAYER__FAILURE };
+};

@@ -1,6 +1,10 @@
 @import '../assets/_mixins.scss';
 
 .LeaderBoard__container {
+  .MuiTableCell-root-80 {
+    padding: 4px 0px 4px 24px;
+  }
+
   @include for-tablet-portrait-up {
     margin: auto;
     width: 80%;

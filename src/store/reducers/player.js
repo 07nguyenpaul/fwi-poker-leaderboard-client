@@ -2,6 +2,13 @@ import {
   FETCH_PLAYERS__REQUEST,
   FETCH_PLAYERS__SUCCESS,
   FETCH_PLAYERS__FAILURE,
+  ADD_PLAYER__REQUEST,
+  ADD_PLAYER__SUCCESS,
+  ADD_PLAYER__FAILURE,
+  EDIT_PLAYER__REQUEST,
+  EDIT_PLAYER__SUCCESS,
+  EDIT_PLAYER__FAILURE,
+
 } from '../actions/actionTypes';
 
 const initialState= {
@@ -16,7 +23,20 @@ export default function players(state=initialState, action) {
     case FETCH_PLAYERS__SUCCESS:
       return { ...state, users: action.users, requesting: false };
     case FETCH_PLAYERS__FAILURE:
-      return { ...state, players: [], requesting: true };
+      return { ...state, players: [], requesting: false };
+    case ADD_PLAYER__REQUEST:
+      return { ...state, requesting: true };
+    case ADD_PLAYER__SUCCESS:
+      return { ...state, users: state.users.concat(action.player), requesting: false };
+    case ADD_PLAYER__FAILURE:
+      return { ...state, requesting: false };
+    case EDIT_PLAYER__REQUEST:
+      return { ...state, requesting: true };
+    case EDIT_PLAYER__SUCCESS:
+      const editPlayerList = state.users.map(item => item.id === action.player.id ? action.player : item);
+      return { ...state, users: editPlayerList, requesting: false };
+    case EDIT_PLAYER__FAILURE:
+      return { ...state, requesting: false };
     default:
       return state;
   }
