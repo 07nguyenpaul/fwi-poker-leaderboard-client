@@ -5,6 +5,10 @@
     padding: 4px 0px 4px 24px;
   }
 
+  .btn--add-player {
+    margin: 6px 0px 6px;
+  }
+
   @include for-tablet-portrait-up {
     margin: auto;
     width: 80%;

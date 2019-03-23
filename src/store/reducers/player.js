@@ -23,11 +23,12 @@ export default function players(state=initialState, action) {
     case FETCH_PLAYERS__SUCCESS:
       return { ...state, users: action.users, requesting: false };
     case FETCH_PLAYERS__FAILURE:
-      return { ...state, players: [], requesting: false };
+      return { ...state, requesting: false };
     case ADD_PLAYER__REQUEST:
       return { ...state, requesting: true };
     case ADD_PLAYER__SUCCESS:
-      return { ...state, users: state.users.concat(action.player), requesting: false };
+      const newPlayerList = state.users.concat(action.player);
+      return { ...state, users: newPlayerList, requesting: false };
     case ADD_PLAYER__FAILURE:
       return { ...state, requesting: false };
     case EDIT_PLAYER__REQUEST:

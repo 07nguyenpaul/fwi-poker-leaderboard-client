@@ -19,4 +19,12 @@ describe('Container: App', () => {
   it('renders without crashing', () => {
     expect(wrapper.find('App').exists()).toBe(true);
   });
+
+  it('renders the header', () => {
+    expect(wrapper.find('Header').exists()).toBe(true);
+  });
+
+  it('renders the LeaderBoard container', () => {
+    expect(wrapper.find('LeaderBoard').exists()).toBe(true);
+  });
 })

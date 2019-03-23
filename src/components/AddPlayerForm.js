@@ -41,7 +41,7 @@ export const AddPlayerForm = ({
       type="name"
       fullWidth
       value={firstName}
-      onChange={onChange('firstName')}
+      onChange={e => onChange('firstName', e)}
       className="form-dialog--textfield__first-name"
     />
     <TextField
@@ -52,7 +52,7 @@ export const AddPlayerForm = ({
       type="name"
       fullWidth
       value={lastName}
-      onChange={onChange('lastName')}
+      onChange={e => onChange('lastName', e)}
       className="form-dialog--textfield__last-name"
     />
     <TextField
@@ -63,7 +63,7 @@ export const AddPlayerForm = ({
       type="name"
       fullWidth
       value={earnings}
-      onChange={onChange('earnings')}
+      onChange={e => onChange('earnings', e)}
       className="form-dialog--textfield__earnings"
     />
     <TextField
@@ -74,7 +74,7 @@ export const AddPlayerForm = ({
       type="name"
       fullWidth
       value={country}
-      onChange={onChange('country')}
+      onChange={e => onChange('country', e)}
       className="form-dialog--textfield__country"
     />
     </DialogContent>
@@ -87,7 +87,7 @@ export const AddPlayerForm = ({
           Edit
         </Button>
         :
-        <Button className="form-dialog--btn__edit" onClick={onSubmit} color="primary">
+        <Button className="form-dialog--btn__save" onClick={onSubmit} color="primary">
           Save
         </Button>
       }

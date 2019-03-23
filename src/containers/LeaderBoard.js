@@ -19,18 +19,16 @@ export class LeaderBoard extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(fetchPlayers());
+    this.props.fetchPlayers();
   }
 
   toggleAddPlayerForm = () => {
-    this.setState({open: !this.state.open})
-    this.setState({firstName: '', lastName: '', earnings: '', country: ''})
+    this.setState({open: !this.state.open, firstName: '', lastName: '', earnings: '', country: '', id: ''})
   };
 
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
-  };
+  handleChange = (name, e) => {
+    this.setState({ [name]: e.target.value });
+  }
 
   handleClick = (e, id, firstName, lastName, earnings, country) => {
     e.preventDefault();
@@ -44,13 +42,13 @@ export class LeaderBoard extends Component {
     e.preventDefault();
     const { firstName, lastName, earnings, country, id } = this.state;
 
-    this.props.dispatch(editPlayer(
+    this.props.editPlayer(
       id,
       firstName,
       lastName,
       parseInt(earnings),
       country
-    ));
+    );
 
     return this.toggleAddPlayerForm();
   }
@@ -74,12 +72,12 @@ export class LeaderBoard extends Component {
     e.preventDefault();
     const { firstName, lastName, earnings, country } = this.state;
 
-    this.props.dispatch(addPlayer(
+    this.props.addPlayer(
       firstName,
       lastName,
       parseInt(earnings),
       country
-    ));
+    );
 
     return this.toggleAddPlayerForm();
   }
@@ -93,7 +91,7 @@ export class LeaderBoard extends Component {
         country={this.state.country}
         open={this.state.open}
         toggleAddPlayerForm={this.toggleAddPlayerForm}
-        onChange={e => this.handleChange(e)}
+        onChange={this.handleChange}
         onSubmit={this.onSubmit}
         onEdit={this.onEdit}
         playerID={this.state.id}
@@ -105,12 +103,12 @@ export class LeaderBoard extends Component {
     const { players } = this.props;
 
     return (
-      <div>
+      <div className="LeaderBoard__container">
         <Button variant="contained" color="primary" className="btn--add-player" onClick={this.toggleAddPlayerForm}>
           Add Player
         </Button>
         {this.renderForm()}
-        <Paper className="LeaderBoard__container">
+        <Paper>
           <Table className="player__table">
             <TableHead>
               <TableRow className="player__table--columns">
@@ -135,4 +133,10 @@ function mapStateToProps(state) {
   };
 };
 
-export default connect(mapStateToProps)(LeaderBoard);
+const mapDispatchToProps = {
+  addPlayer,
+  editPlayer,
+  fetchPlayers,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoard);
