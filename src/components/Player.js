@@ -2,8 +2,10 @@ import React from 'react';
 import { TableCell, TableRow } from '@material-ui/core';
 import Flag from 'react-world-flags'
 
-export const Player = ({ country, earnings, firstName, handleClick, id, index, lastName }) => (
-  <TableRow hover onClick={e => handleClick(e, id, firstName, lastName, earnings, country)}>
+import './Player.scss';
+
+export const Player = ({ country, earnings, firstName, handleRowClick, id, index, lastName }) => (
+  <TableRow hover onClick={e => handleRowClick(e, id, firstName, lastName, earnings, country)}>
     <TableCell component="th" scope="row" className="Player--row__name">
       {index + 1}. {firstName} {lastName}
     </TableCell>
@@ -16,6 +18,5 @@ export const Player = ({ country, earnings, firstName, handleClick, id, index, l
     </TableCell>
   </TableRow>
 )
-
 
 export default Player;

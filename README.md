@@ -1,4 +1,4 @@
-# FWI - Poker LeaderBoard
+# FWI - Poker LeaderBoard Client
 
 ## Getting Started
 

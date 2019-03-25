@@ -75,47 +75,47 @@ describe('Container: LeaderBoard', () => {
     expect(wrapper.instance().props.addPlayer).toHaveBeenCalledWith(event);
   });
 
-  it('should change the firstName state value when handleChange() is called', () => {
+  it('should change the firstName state value when handleValueChange() is called', () => {
     const event = {
       target: {
         value: 'Bob',
       },
     };
 
-    wrapper.instance().handleChange('firstName', event);
+    wrapper.instance().handleValueChange('firstName', event);
     expect(wrapper.state('firstName')).toBe('Bob');
   });
 
-  it('should change the lastName state value when handleChange() is called', () => {
+  it('should change the lastName state value when handleValueChange() is called', () => {
     const event = {
       target: {
         value: 'Ross',
       },
     };
 
-    wrapper.instance().handleChange('lastName', event);
+    wrapper.instance().handleValueChange('lastName', event);
     expect(wrapper.state('lastName')).toBe('Ross');
   });
 
-  it('should change the earnings state value when handleChange() is called', () => {
+  it('should change the earnings state value when handleValueChange() is called', () => {
     const event = {
       target: {
         value: '123',
       },
     };
 
-    wrapper.instance().handleChange('earnings', event);
+    wrapper.instance().handleValueChange('earnings', event);
     expect(wrapper.state('earnings')).toBe('123');
   });
 
-  it('should change the country state value when handleChange() is called', () => {
+  it('should change the country state value when handleValueChange() is called', () => {
     const event = {
       target: {
         value: 'CA',
       },
     };
 
-    wrapper.instance().handleChange('country', event);
+    wrapper.instance().handleValueChange('country', event);
     expect(wrapper.state('country')).toBe('CA');
   });
 

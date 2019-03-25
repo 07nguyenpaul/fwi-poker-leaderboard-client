@@ -6,15 +6,33 @@
   }
 
   .btn--add-player {
-    margin: 6px 0px 6px;
+    background-color: slategrey;
+    font-size: 12px;
+    margin: 6px 10px 6px;
+  }
+
+  .btn--add-player:hover {
+    background-color: rgba(112, 128, 144, 0.8);
   }
 
   @include for-tablet-portrait-up {
     margin: auto;
     width: 80%;
+
+    .btn--add-player {
+      margin: 6px 0px 6px;
+    }
   }
 
   @include for-tablet-landscape-up {
     width: 60%;
+  }
+}
+
+.player__table--columns {
+  background-color: slategrey;
+
+  .MuiTableCell-head-81  {
+    color: #fbfbfb;
   }
 }

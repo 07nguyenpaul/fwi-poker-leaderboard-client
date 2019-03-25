@@ -26,11 +26,11 @@ export class LeaderBoard extends Component {
     this.setState({open: !this.state.open, firstName: '', lastName: '', earnings: '', country: '', id: ''})
   };
 
-  handleChange = (name, e) => {
+  handleValueChange = (name, e) => {
     this.setState({ [name]: e.target.value });
   }
 
-  handleClick = (e, id, firstName, lastName, earnings, country) => {
+  handleRowClick = (e, id, firstName, lastName, earnings, country) => {
     e.preventDefault();
 
     this.toggleAddPlayerForm()
@@ -53,6 +53,20 @@ export class LeaderBoard extends Component {
     return this.toggleAddPlayerForm();
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { firstName, lastName, earnings, country } = this.state;
+
+    this.props.addPlayer(
+      firstName,
+      lastName,
+      parseInt(earnings),
+      country.toUpperCase(),
+    );
+
+    return this.toggleAddPlayerForm();
+  }
+
   renderPlayers() {
     return this.props.players.map((player, index) => (
       <Player
@@ -63,23 +77,9 @@ export class LeaderBoard extends Component {
         key={player.id}
         id={player.id}
         lastName={player.lastName}
-        handleClick={this.handleClick}
+        handleRowClick={this.handleRowClick}
       />
     ));
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { firstName, lastName, earnings, country } = this.state;
-
-    this.props.addPlayer(
-      firstName,
-      lastName,
-      parseInt(earnings),
-      country
-    );
-
-    return this.toggleAddPlayerForm();
   }
 
   renderForm() {
@@ -91,7 +91,7 @@ export class LeaderBoard extends Component {
         country={this.state.country}
         open={this.state.open}
         toggleAddPlayerForm={this.toggleAddPlayerForm}
-        onChange={this.handleChange}
+        onValueChange={this.handleValueChange}
         onSubmit={this.onSubmit}
         onEdit={this.onEdit}
         playerID={this.state.id}
