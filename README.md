@@ -3,6 +3,7 @@
 ## Getting Started
 
 1. Clone this repo.
+1. Clone server [repo](https://github.com/07nguyenpaul/fwi-poker-leaderboard-server)
 1. `yarn install` - to install dependencies
 1. `yarn start` - to run the application
 1. `yarn test` - to run tests
